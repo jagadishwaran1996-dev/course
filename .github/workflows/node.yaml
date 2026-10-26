@@ -28,5 +28,3 @@ jobs:
               curl http://locahost:8080
               curl http://locahost:8080/health
               pkill -f "node dev.js"
-            
-          
