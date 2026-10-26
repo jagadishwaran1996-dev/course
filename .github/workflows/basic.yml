@@ -10,4 +10,4 @@ jobs:
 
     steps:
       - name: Basic GHA pipeline
-      run: echo "Basic Github Action Pipeline"
+        run: echo "Basic Github Action Pipeline"
