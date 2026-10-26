@@ -1,6 +1,30 @@
 {
   "dependencies": {
-    "dotenv": "^18.0.7",
-    "express": "^5.3.0"
-  }
+    "dotenv": "^18.0.8",
+    "express": "^5.3.0",
+    "path": "^0.12.7",
+    "sonar-scanner": "^3.1.0",
+    "sonarqube": "^0.0.1",
+    "sonarqube-scanner": "^3.5.0"
+  },
+  "name": "course",
+  "description": "course",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "sonar": "sonar-scanner"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jagadishwaran1996-dev/course.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jagadishwaran1996-dev/course/issues"
+  },
+  "homepage": "https://github.com/jagadishwaran1996-dev/course#readme"
 }

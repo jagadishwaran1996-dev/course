@@ -1,0 +1,14 @@
+FROM node:lts-alpine3.24 as build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --only=production
+
+FROM gcr.io/distroless/nodejs26-debian13
+WORKDIR /app
+COPY --from=build /app/node_modules ./node_modules
+copy dev.js ./
+copy package.json ./
+EXPOSE 8080
+USER 65532
+CMD ["dev.js","development"]
+

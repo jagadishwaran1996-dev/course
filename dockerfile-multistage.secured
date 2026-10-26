@@ -1,0 +1,16 @@
+FROM node:lts-alpine3.24 as build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --only=production
+
+FROM node:lts-alpine3.24
+WORKDIR /app
+COPY --from=build /app/node_modules ./node_modules
+copy dev.js ./
+copy package.json ./
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+EXPOSE 8080
+USER appuser
+ENTRYPOINT ["node"]
+CMD ["dev.js","development"]
+
