@@ -35,3 +35,4 @@ jobs:
           curl http://localhost:8080
           curl http://localhost:8080/health
           pkill -f "node dev.js"
+
