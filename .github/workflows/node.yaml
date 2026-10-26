@@ -19,12 +19,12 @@ jobs:
             node-version: 24
 
         - name: Install dependecies
-            run: npm install
+          run: npm install
 
         - name: Run the Application
-            run: |
-              node dev.js
-              sleep 5
-              curl http://locahost:8080
-              curl http://locahost:8080/health
-              pkill -f "node dev.js"
+          run: |
+            node dev.js
+            sleep 5
+            curl http://locahost:8080
+            curl http://locahost:8080/health
+            pkill -f "node dev.js"
