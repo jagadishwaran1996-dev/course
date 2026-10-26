@@ -6,7 +6,7 @@ on:
 
 jobs:
   basic:
-    runs-on: ubuntu-26.04
+    runs-on: wsl-linux
 
     steps:
       - name: Basic GHA pipeline
