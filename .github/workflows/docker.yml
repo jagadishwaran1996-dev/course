@@ -1,0 +1,30 @@
+name: Docker CI pipeline
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch: 
+
+jobs:
+  node:
+    runs-on: wsl-linux
+
+    steps:
+      - name: Clone code
+        uses: actions/checkout@v7
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v4
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASS }}
+
+      - name: Docker buil image
+        run: docker build -f Dockerfile.distroless -t dockerfile-distroless .
+
+      - name: tag and push docker image
+        run: |
+          short_sha=${GITHUB_SHA::7)
+          docker tag dockerfile-distroless ${{ vars.DOCKERHUB_USERNAME }}/nodeapp:$short_sha
+          docker push ${{ vars.DOCKERHUB_USERNAME }}/nodeapp:$short_sha
+           
