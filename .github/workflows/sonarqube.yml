@@ -1,0 +1,24 @@
+name: Sonarqube Pipeline
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch: 
+
+jobs:
+  sonarqube:
+    runs-on: wsl-linux
+
+    steps:
+      - name: clone code
+        uses: actions/checkout@v7
+
+      - name: SonarQube Analysis
+        uses: SonarSource/sonarqube-scan-action@v8
+        with:
+          args: >
+            -Dsonar.projectKey=NodeApplication
+            -Dsonar.sources=.
+            -Dsonar.host.url=${{ vars.SONAR_HOST_URL }}
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.qualitygate.wait=true
