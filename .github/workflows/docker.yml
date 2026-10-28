@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASS }}
 
       - name: Docker buil image
-        run: docker build -f Dockerfile.distroless -t dockerfile-distroless .
+        run: docker build -f dockerfile.distroless -t dockerfile-distroless .
 
       - name: tag and push docker image
         run: |
